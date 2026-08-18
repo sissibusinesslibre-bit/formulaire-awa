@@ -1,0 +1,729 @@
+<title>Candidature Awa</title>
+<style>
+  :root {
+    --bg:       #07050C;
+    --bg-2:     #0F0C18;
+    --surface:  #140F1E;
+    --surface-2:#1C1728;
+    --rose:     #D4849A;
+    --rose-l:   #EAB5C4;
+    --rose-dim: rgba(212,132,154,0.12);
+    --cream:    #F0E8D4;
+    --muted:    #7A6C80;
+    --muted-l:  #9A8EA6;
+    --border:   rgba(212,132,154,0.12);
+    --border-a: rgba(212,132,154,0.32);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    padding-bottom: 5rem;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(160deg, #1A0E22 0%, #07050C 65%);
+    padding: 4rem 1.5rem 3rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(212,132,154,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--rose-dim);
+    border: 1px solid var(--border-a);
+    color: var(--rose-l);
+    font-size: 0.64rem; font-weight: 700;
+    letter-spacing: .18em; text-transform: uppercase;
+    padding: 5px 18px; border-radius: 50px;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+    font-weight: 400; font-style: italic;
+    color: var(--cream); line-height: 1.2;
+    text-wrap: balance;
+    margin-bottom: 1rem;
+  }
+  .hero h1 em { color: var(--rose); font-style: normal; }
+  .hero-sub {
+    font-size: 0.87rem;
+    color: var(--muted-l);
+    max-width: 520px; margin: 0 auto 1.8rem;
+    line-height: 1.85;
+  }
+  .hero-sig {
+    display: inline-flex;
+    align-items: center; gap: .7rem;
+    font-size: 0.78rem; color: var(--muted-l);
+  }
+  .hero-sig-dot {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: var(--rose-dim);
+    border: 1.5px solid rgba(212,132,154,0.4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+
+  /* ── WRAP ── */
+  .wrap { max-width: 680px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* ── SECTION ── */
+  .form-section { margin-top: 2.8rem; }
+  .section-label {
+    display: flex; align-items: center; gap: .9rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: .9rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    width: 28px; height: 28px;
+    background: var(--rose-dim);
+    border: 1px solid var(--border-a);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.68rem; font-weight: 700; color: var(--rose);
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: Georgia, serif;
+    font-size: 1rem; font-style: italic;
+    color: var(--cream);
+  }
+
+  /* ── FIELD ── */
+  .field { margin-bottom: 1.4rem; }
+  .field label {
+    display: block;
+    font-size: 0.79rem; font-weight: 600;
+    color: var(--muted-l); letter-spacing: .04em;
+    margin-bottom: .55rem;
+  }
+  .field label .req { color: var(--rose); margin-left: 2px; }
+
+  .field input[type="text"],
+  .field input[type="email"],
+  .field input[type="tel"],
+  .field input[type="number"],
+  .field textarea,
+  .field select {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--cream);
+    font-family: inherit; font-size: 0.88rem;
+    padding: 12px 16px;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+    -webkit-appearance: none; appearance: none;
+  }
+  .field input:focus,
+  .field textarea:focus,
+  .field select:focus {
+    border-color: var(--border-a);
+    box-shadow: 0 0 0 3px rgba(212,132,154,0.07);
+  }
+  .field input::placeholder,
+  .field textarea::placeholder { color: var(--muted); }
+  .field textarea { resize: vertical; min-height: 80px; }
+  .field select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A6C80' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 38px;
+  }
+  .field select option { background: #1C1728; }
+
+  /* ── GRID ROW ── */
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 520px) { .field-row { grid-template-columns: 1fr; } }
+
+  /* ── PILLS ── */
+  .pill-group { display: flex; flex-wrap: wrap; gap: .45rem; }
+  .pill-option input { display: none; }
+  .pill-option label {
+    display: block;
+    padding: 7px 15px;
+    border-radius: 50px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--muted-l);
+    font-size: 0.79rem;
+    cursor: pointer;
+    transition: all .2s;
+    user-select: none;
+    line-height: 1.4;
+  }
+  .pill-option label:hover { border-color: var(--border-a); color: var(--cream); }
+  .pill-option input:checked + label {
+    background: rgba(212,132,154,0.14);
+    border-color: var(--rose);
+    color: var(--rose-l);
+  }
+
+  /* ── WARNING ── */
+  .warning-box {
+    display: none;
+    background: rgba(196,80,96,0.07);
+    border: 1px solid rgba(196,80,96,0.22);
+    border-radius: 10px;
+    padding: .9rem 1.1rem;
+    font-size: 0.80rem; color: #E07080;
+    margin-top: .7rem; line-height: 1.7;
+  }
+  .warning-box.show { display: block; }
+
+  /* ── SUBMIT ── */
+  .submit-wrap {
+    margin-top: 3rem;
+    text-align: center;
+    padding: 2.5rem 2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+  }
+  .submit-note {
+    font-size: 0.80rem; color: var(--muted-l);
+    margin-bottom: 1.4rem; line-height: 1.85;
+  }
+  .submit-btn {
+    display: inline-block;
+    background: var(--rose);
+    color: var(--bg);
+    font-weight: 700; font-size: 0.95rem;
+    padding: 16px 52px;
+    border-radius: 50px; border: none;
+    cursor: pointer; transition: all .3s;
+    letter-spacing: .02em;
+  }
+  .submit-btn:hover {
+    background: var(--rose-l);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 32px rgba(212,132,154,0.35);
+  }
+  .reassurance {
+    font-size: 0.71rem; color: var(--muted);
+    margin-top: .9rem;
+  }
+</style>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">Candidature Awa × Renaissance by Sissi</div>
+  <h1>Un métier qui respecte <em>ta famille</em><br>& ton quotidien</h1>
+  <p class="hero-sub">Chaque candidature est étudiée avec attention. Réponds avec sincérité — seules les personnes correspondant à cette vision seront recontactées.</p>
+  <div class="hero-sig">
+    <div class="hero-sig-dot">🌺</div>
+    <span>Sissi · Apporteuse d'affaires Awa</span>
+  </div>
+</div>
+
+<div class="wrap">
+<form id="awa-form">
+
+  <!-- 1 — Informations personnelles -->
+  <div class="form-section">
+    <div class="section-label">
+      <div class="section-num">1</div>
+      <div class="section-title">Tes informations personnelles</div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Prénom et nom <span class="req">*</span></label>
+        <input type="text" name="nom" placeholder="Marie Dupont" required />
+      </div>
+      <div class="field">
+        <label>Âge <span class="req">*</span></label>
+        <input type="number" name="age" placeholder="Ex : 32" min="18" max="65" required />
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Adresse email <span class="req">*</span></label>
+        <input type="email" name="email" placeholder="marie@exemple.fr" required />
+      </div>
+      <div class="field">
+        <label>Numéro de téléphone <span class="req">*</span></label>
+        <input type="tel" name="telephone" placeholder="06 XX XX XX XX" required />
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Adresse postale complète <span class="req">*</span></label>
+      <textarea name="adresse" placeholder="Numéro, rue, code postal, ville…" required></textarea>
+    </div>
+  </div>
+
+  <!-- 2 — Présence en ligne -->
+  <div class="form-section">
+    <div class="section-label">
+      <div class="section-num">2</div>
+      <div class="section-title">Ta présence en ligne</div>
+    </div>
+
+    <div class="field">
+      <label>Pseudo Instagram, Facebook ou TikTok</label>
+      <input type="text" name="pseudo" placeholder="@monpseudo" />
+    </div>
+
+    <div class="field">
+      <label>As-tu déjà créé ton identité numérique ? <span class="req">*</span></label>
+      <div class="pill-group">
+        <div class="pill-option">
+          <input type="radio" name="identite_num" id="id-oui" value="Oui" required />
+          <label for="id-oui">Oui</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="identite_num" id="id-non" value="Non" />
+          <label for="id-non">Non, pas encore</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 — Situation professionnelle -->
+  <div class="form-section">
+    <div class="section-label">
+      <div class="section-num">3</div>
+      <div class="section-title">Ta situation professionnelle</div>
+    </div>
+
+    <div class="field">
+      <label>Quelle est ta situation actuelle vis-à-vis de l'emploi ? <span class="req">*</span></label>
+      <div class="pill-group">
+        <div class="pill-option">
+          <input type="radio" name="situation" id="sit-ft" value="Inscrite à France Travail" required />
+          <label for="sit-ft">Inscrite à France Travail</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="situation" id="sit-tp" value="Temps plein" />
+          <label for="sit-tp">Temps plein</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="situation" id="sit-tpa" value="Temps partiel" />
+          <label for="sit-tpa">Temps partiel</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="situation" id="sit-rsa" value="Au RSA" />
+          <label for="sit-rsa">Au RSA</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="situation" id="sit-cp" value="Congé parental / arrêt" />
+          <label for="sit-cp">Congé parental / arrêt</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="situation" id="sit-autre" value="Autre" />
+          <label for="sit-autre">Autre</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>As-tu déjà travaillé en tant que salariée ? <span class="req">*</span></label>
+      <div class="pill-group">
+        <div class="pill-option">
+          <input type="radio" name="experience" id="exp-3p" value="Oui, plus de 3 ans" required />
+          <label for="exp-3p">Oui, plus de 3 ans</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="experience" id="exp-3m" value="Oui, moins de 3 ans" />
+          <label for="exp-3m">Oui, moins de 3 ans</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="experience" id="exp-fonc" value="Fonction publique" />
+          <label for="exp-fonc">Fonction publique</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="experience" id="exp-non" value="Je n'ai jamais travaillé" />
+          <label for="exp-non">Je n'ai jamais travaillé</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Travailles-tu dans la fonction publique ? <span class="req">*</span></label>
+      <div class="pill-group">
+        <div class="pill-option">
+          <input type="radio" name="fonction_pub" id="fp-oui" value="Oui, tout est ok" required onchange="checkFP(this)" />
+          <label for="fp-oui">Oui, tout est ok</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="fonction_pub" id="fp-non" value="Non" onchange="checkFP(this)" />
+          <label for="fp-non">Non</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="fonction_pub" id="fp-perso" value="Financement personnel" onchange="checkFP(this)" />
+          <label for="fp-perso">Financement personnel</label>
+        </div>
+      </div>
+      <div class="warning-box" id="fp-warning">
+        ⚠️ Le financement CPF via France Travail requiert d'être inscrite comme demandeuse d'emploi ou dans la fonction publique. Si ce n'est pas ton cas, tu pourras opter pour un financement personnel.
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 — Formation & financement -->
+  <div class="form-section">
+    <div class="section-label">
+      <div class="section-num">4</div>
+      <div class="section-title">Formation & financement</div>
+    </div>
+
+    <div class="field">
+      <label>Formation souhaitée <span class="req">*</span></label>
+      <select name="formation" required>
+        <option value="" disabled selected>Choisir une formation…</option>
+        <option>Communication par les réseaux sociaux</option>
+        <option>IA (Intelligence Artificielle)</option>
+        <option>Bilan de compétences</option>
+        <option>Home Staging</option>
+        <option>Canva</option>
+        <option>UGC (User Generated Content)</option>
+        <option>TikTok</option>
+        <option>Ongles</option>
+        <option>Cils</option>
+        <option>Technicienne esthétique</option>
+        <option>Coiffure</option>
+        <option>Blanchiment dentaire</option>
+        <option>Head Spa</option>
+        <option>Naturopathe</option>
+        <option>Coach minceur</option>
+        <option>Fleurs de Bach</option>
+        <option>Sophrologie</option>
+        <option>Exercice de sophrologie</option>
+        <option>Réflexologie</option>
+        <option>Pâtisserie</option>
+      </select>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Montant de la formation (€) <span class="req">*</span></label>
+        <select name="montant" required>
+          <option value="" disabled selected>Sélectionner…</option>
+          <option>250 €</option>
+          <option>300 €</option>
+          <option>500 €</option>
+          <option>700 €</option>
+          <option>800 €</option>
+          <option>900 €</option>
+          <option>1 000 €</option>
+          <option>1 500 €</option>
+          <option>1 600 €</option>
+          <option>1 650 €</option>
+          <option>1 700 €</option>
+          <option>1 800 €</option>
+          <option>1 989 €</option>
+          <option>2 000 €</option>
+          <option>2 100 €</option>
+          <option>2 500 €</option>
+          <option>2 589 €</option>
+          <option>3 000 €</option>
+          <option>3 500 €</option>
+          <option>4 000 €</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Mode de financement <span class="req">*</span></label>
+        <select name="financement" required>
+          <option value="" disabled selected>Sélectionner…</option>
+          <option>Compte Personnel de Formation (CPF)</option>
+          <option>Financement personnel — 3 fois</option>
+          <option>Financement personnel — 4 fois</option>
+          <option>Financement personnel — 1 fois (virement)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Possèdes-tu un ordinateur personnel avec caméra ? <span class="req">*</span></label>
+      <div class="pill-group">
+        <div class="pill-option">
+          <input type="radio" name="ordi" id="ordi-oui" value="Oui" required />
+          <label for="ordi-oui">Oui</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="ordi" id="ordi-non" value="Non" />
+          <label for="ordi-non">Non</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 — Motivations -->
+  <div class="form-section">
+    <div class="section-label">
+      <div class="section-num">5</div>
+      <div class="section-title">Tes motivations</div>
+    </div>
+
+    <div class="field">
+      <label>Ce qui te pèse le plus au quotidien… <span class="req">*</span></label>
+      <div class="pill-group">
+        <div class="pill-option">
+          <input type="radio" name="pese" id="p-temps" value="Le manque de temps avec mes enfants" required />
+          <label for="p-temps">Manque de temps avec mes enfants</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="pese" id="p-stress" value="Le stress de tout jongler" />
+          <label for="p-stress">Le stress de tout jongler</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="pese" id="p-revenu" value="Le manque de revenu" />
+          <label for="p-revenu">Le manque de revenu</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="pese" id="p-rond" value="Le sentiment de tourner en rond" />
+          <label for="p-rond">Tourner en rond</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="pese" id="p-autre" value="Autre" />
+          <label for="p-autre">Autre</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Ce qui est le plus important pour toi dans un projet professionnel ? <span class="req">*</span></label>
+      <div class="pill-group">
+        <div class="pill-option">
+          <input type="radio" name="important" id="imp-pres" value="Être présente pour mes enfants" required />
+          <label for="imp-pres">Être présente pour mes enfants</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="important" id="imp-rev" value="Avoir un revenu stable" />
+          <label for="imp-rev">Avoir un revenu stable</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="important" id="imp-util" value="Me sentir utile et évoluer" />
+          <label for="imp-util">Me sentir utile et évoluer</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="important" id="imp-autre" value="Autre" />
+          <label for="imp-autre">Autre</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Qu'est-ce qui t'empêche de te lancer réellement ? <span class="req">*</span></label>
+      <div class="pill-group">
+        <div class="pill-option">
+          <input type="radio" name="empeche" id="emp-temps" value="Peur de manquer de temps" required />
+          <label for="emp-temps">Peur de manquer de temps</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="empeche" id="emp-reuss" value="Peur de ne pas réussir" />
+          <label for="emp-reuss">Peur de ne pas réussir</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="empeche" id="emp-fin" value="Manque de moyens pour financer" />
+          <label for="emp-fin">Manque de moyens</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="empeche" id="emp-acc" value="Peur de ne pas être accompagnée" />
+          <label for="emp-acc">Peur de ne pas être accompagnée</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="empeche" id="emp-autre" value="Autre" />
+          <label for="emp-autre">Autre</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>As-tu déjà essayé de te reconvertir ou de lancer une activité ? <span class="req">*</span></label>
+      <div class="pill-group">
+        <div class="pill-option">
+          <input type="radio" name="reconversion" id="rec-non" value="Non, jamais" required />
+          <label for="rec-non">Non, jamais</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="reconversion" id="rec-laisse" value="Oui, mais j'ai laissé tomber" />
+          <label for="rec-laisse">Oui, j'ai laissé tomber</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="reconversion" id="rec-obj" value="Oui, sans atteindre mes objectifs" />
+          <label for="rec-obj">Oui, sans atteindre mes objectifs</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="reconversion" id="rec-form" value="Oui, et je veux aller plus loin" />
+          <label for="rec-form">Oui, et je veux aller plus loin</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Es-tu prête à suivre une formation certifiante à ton rythme ? <span class="req">*</span></label>
+      <div class="pill-group">
+        <div class="pill-option">
+          <input type="radio" name="prete" id="pret-oui" value="Oui, je suis prête" required />
+          <label for="pret-oui">Oui, je suis prête</label>
+        </div>
+        <div class="pill-option">
+          <input type="radio" name="prete" id="pret-non" value="Non, pas pour l'instant" />
+          <label for="pret-non">Non, pas pour l'instant</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 — Contact -->
+  <div class="form-section">
+    <div class="section-label">
+      <div class="section-num">6</div>
+      <div class="section-title">Comment te recontacter</div>
+    </div>
+
+    <div class="field">
+      <label>Comment souhaites-tu être recontactée ? (WhatsApp, email, Instagram…)</label>
+      <textarea name="contact_pref" placeholder="Ex : de préférence par WhatsApp au 06 XX XX XX XX"></textarea>
+    </div>
+  </div>
+
+  <!-- SUBMIT -->
+  <div class="submit-wrap">
+    <p class="submit-note">
+      Merci d'avoir répondu avec sincérité 🤍<br>
+      Ta candidature sera étudiée avec attention. Si ton profil correspond,<br>Sissi te recontacte très prochainement.
+    </p>
+    <button type="submit" class="submit-btn">Envoyer ma candidature</button>
+    <p class="reassurance">Tes données restent confidentielles et ne sont utilisées que pour traiter ta candidature.</p>
+  </div>
+
+</form>
+</div>
+
+<style>
+  /* ── CONFIRMATION ── */
+  #confirmation {
+    display: none;
+    max-width: 680px;
+    margin: 4rem auto;
+    padding: 0 1.5rem;
+    text-align: center;
+  }
+  .confirm-card {
+    background: var(--surface);
+    border: 1px solid var(--border-a);
+    border-radius: 24px;
+    padding: 3.5rem 2.5rem;
+  }
+  .confirm-icon {
+    width: 72px; height: 72px;
+    background: rgba(212,132,154,0.12);
+    border: 2px solid var(--rose);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 1.8rem;
+  }
+  .confirm-card h2 {
+    font-family: Georgia, serif;
+    font-size: 1.6rem; font-style: italic; font-weight: 400;
+    color: var(--cream); margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  .confirm-card h2 em { color: var(--rose); font-style: normal; }
+  .confirm-card p {
+    font-size: 0.88rem; color: var(--muted-l);
+    line-height: 1.85; max-width: 420px; margin: 0 auto;
+  }
+  .confirm-divider {
+    width: 40px; height: 1px;
+    background: var(--border-a);
+    margin: 1.8rem auto;
+  }
+  .confirm-sig {
+    font-size: 0.78rem; color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ── LOADING STATE ── */
+  .submit-btn.loading {
+    opacity: .7; cursor: not-allowed;
+    pointer-events: none;
+  }
+</style>
+
+<!-- CONFIRMATION (cachée par défaut) -->
+<div id="confirmation">
+  <div class="confirm-card">
+    <div class="confirm-icon">🌺</div>
+    <h2>Ta candidature a bien été <em>envoyée</em></h2>
+    <p>Merci d'avoir pris le temps de répondre avec sincérité. Sissi va étudier ton profil et te recontactera très prochainement si tu corresponds à cette vision.</p>
+    <div class="confirm-divider"></div>
+    <p class="confirm-sig">Sissi · Apporteuse d'affaires Awa</p>
+  </div>
+</div>
+
+<script>
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyyFbL-WU5_JfVMwLim48wb_mYI7xbQmpIKizd-TvI_OOgFL1lTqW8it8wic2acIjQ3/exec';
+
+  function checkFP(el) {
+    document.getElementById('fp-warning').classList.toggle('show', el.value === 'Non');
+  }
+
+  function getVal(name) {
+    const el = document.querySelector(`[name="${name}"]`);
+    if (!el) return '';
+    if (el.type === 'radio') {
+      const checked = document.querySelector(`[name="${name}"]:checked`);
+      return checked ? checked.value : '';
+    }
+    return el.value || '';
+  }
+
+  document.getElementById('awa-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const btn = this.querySelector('.submit-btn');
+    btn.textContent = 'Envoi en cours…';
+    btn.classList.add('loading');
+
+    const data = {
+      nom: getVal('nom'), age: getVal('age'),
+      email: getVal('email'), telephone: getVal('telephone'),
+      adresse: getVal('adresse'), pseudo: getVal('pseudo'),
+      identite_num: getVal('identite_num'),
+      situation: getVal('situation'), experience: getVal('experience'),
+      fonction_pub: getVal('fonction_pub'),
+      formation: getVal('formation'), montant: getVal('montant'),
+      financement: getVal('financement'), ordi: getVal('ordi'),
+      pese: getVal('pese'), important: getVal('important'),
+      empeche: getVal('empeche'), reconversion: getVal('reconversion'),
+      prete: getVal('prete'), contact_pref: getVal('contact_pref')
+    };
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify(data)
+      });
+    } catch (_) {}
+
+    document.querySelector('.wrap').style.display = 'none';
+    document.querySelector('.hero').style.display = 'none';
+    document.getElementById('confirmation').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
